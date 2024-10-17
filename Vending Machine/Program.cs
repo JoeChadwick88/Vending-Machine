@@ -16,8 +16,27 @@ namespace Vending_Machine
         static void Main(string[] args)
         {
             product[] machine = new product[10];
+            bool repeat = true;
+            double balance = 0;
             LoadItems(machine);
-            DisplayItems(machine);
+            Console.WriteLine("========================================================================================");
+            while (repeat == true)
+            {
+                Console.WriteLine("Press 1 to buy an item, Press 2 to insert money or Press 3 to exit");
+                switch (Console.ReadLine())
+                {
+                    case "1":
+                        DisplayItems(machine);
+                        break;
+                    case "2":
+                        InsertMoney(balance);
+                        break;
+                    case "3":
+                        repeat =false; 
+                        break;
+                }
+            }
+         
 
         }
         static void LoadItems(product[] machine)
@@ -44,6 +63,14 @@ namespace Vending_Machine
             machine[9].price = 0.80;
 
 
+        }
+        static void InsertMoney(double balance)
+        {
+            Console.WriteLine("How much money do you want to insert");
+            Console.WriteLine("we accept the following: 5p, 10p, 20p, 50p, £1 and £2 coins only");
+            Console.WriteLine("enter in decimal form (e.g £1.50 is 1.5)");
+            balance = balance + double.Parse(Console.ReadLine());
+            
         }
         static void DisplayItems(product[] machine)
         {
