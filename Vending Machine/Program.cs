@@ -32,7 +32,7 @@ namespace Vending_Machine
                         InsertMoney(balance);
                         break;
                     case "3":
-                        repeat =false; 
+                        repeat = false; 
                         break;
                 }
             }
@@ -69,7 +69,13 @@ namespace Vending_Machine
             Console.WriteLine("How much money do you want to insert");
             Console.WriteLine("we accept the following: 5p, 10p, 20p, 50p, £1 and £2 coins only");
             Console.WriteLine("enter in decimal form (e.g £1.50 is 1.5)");
-            balance = balance + double.Parse(Console.ReadLine());
+            int money = int.Parse(Console.ReadLine());
+            if (money == 0.05 || money == 0.1 || money == 0.2 || money == 0.5 || money == 1 || money == 2)
+            {
+                balance = balance + money;
+                Console.WriteLine("Balnce: " + balance);
+            }
+            
             
         }
         static void DisplayItems(product[] machine)
